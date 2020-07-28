@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeguimientoAuditoriaTable extends Migration
+class CreateProcesoXPlanAuditoriaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateSeguimientoAuditoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('seguimiento_auditoria', function (Blueprint $table) {
+        Schema::create('proceso_x_plan_auditoria', function (Blueprint $table) {
             $table->id();
+            $table->integer('proceso_id');
             $table->integer('plan_auditoria_id');
-            $table->integer('actividad_id');
-            $table->integer('periodo_id');
             $table->timestamps();
 
+            $table->foreign('proceso_id')->references('id')->on('macroproceso');
             $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
-            $table->foreign('actividad_id')->references('id')->on('actividad');
-            $table->foreign('periodo_id')->references('id')->on('periodo');
         });
     }
 
@@ -33,6 +31,6 @@ class CreateSeguimientoAuditoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seguimiento_auditoria');
+        Schema::dropIfExists('proceso_x_plan_auditoria');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMesTable extends Migration
+class CreatePeriodoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mes', function (Blueprint $table) {
+        Schema::create('periodo', function (Blueprint $table) {
             $table->id();
             $table->string('valor', 100);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateMesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mes');
+        Schema::dropIfExists('periodo');
     }
 }

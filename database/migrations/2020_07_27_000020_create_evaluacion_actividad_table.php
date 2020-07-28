@@ -15,6 +15,7 @@ class CreateEvaluacionActividadTable extends Migration
     {
         Schema::create('evaluacion_actividad', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('actividad_id');
             $table->text('acciones_mecanismos');
             $table->text('existencia');
@@ -23,7 +24,8 @@ class CreateEvaluacionActividadTable extends Migration
             $table->text('porcentaje_excepciones');
             $table->text('hallazgos');
             $table->timestamps();
-
+            
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('actividad_id')->references('id')->on('actividad');
         });
     }

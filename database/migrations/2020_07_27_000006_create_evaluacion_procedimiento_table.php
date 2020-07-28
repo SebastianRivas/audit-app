@@ -15,6 +15,7 @@ class CreateEvaluacionProcedimientoTable extends Migration
     {
         Schema::create('evaluacion_procedimiento', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('procedimiento_id');
             $table->boolean('cobertura');
             $table->text('alcance');
@@ -24,6 +25,7 @@ class CreateEvaluacionProcedimientoTable extends Migration
             $table->text('observaciones');
             $table->timestamps();
 
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('procedimiento_id')->references('id')->on('procedimiento');
         });
     }

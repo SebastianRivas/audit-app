@@ -15,6 +15,7 @@ class CreateRiesgoActividadTable extends Migration
     {
         Schema::create('riesgo_actividad', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('actividad_id');
             $table->text('descripcion');
             $table->text('riesgo_inherente');
@@ -23,7 +24,8 @@ class CreateRiesgoActividadTable extends Migration
             $table->text('solidez');
             $table->text('riesgo_residual');
             $table->timestamps();
-
+            
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('actividad_id')->references('id')->on('actividad');
         });
     }

@@ -15,9 +15,12 @@ class CreatePlanAuditoriaTable extends Migration
     {
         Schema::create('plan_auditoria', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->text('alcance');
             $table->text('enfoque');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

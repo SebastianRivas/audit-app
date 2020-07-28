@@ -15,6 +15,7 @@ class CreatePlanTrabajoTable extends Migration
     {
         Schema::create('plan_trabajo', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('alcance_id');
             $table->text('prueba');
             $table->text('tipo_prueba');
@@ -24,6 +25,7 @@ class CreatePlanTrabajoTable extends Migration
             $table->text('referencias_accion');
             $table->timestamps();
 
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('alcance_id')->references('id')->on('alcance');
         });
     }

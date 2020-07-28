@@ -18,13 +18,13 @@ class CreateCronogramaTable extends Migration
             $table->integer('plan_auditoria_id');
             $table->integer('tipo_cronograma_id');
             $table->integer('actividad_id');
-            $table->integer('mes_id');
+            $table->integer('periodo_id');
             $table->timestamps();
 
             $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('tipo_cronograma_id')->references('id')->on('tipo_cronograma');
             $table->foreign('actividad_id')->references('id')->on('actividad');
-            $table->foreign('mes_id')->references('id')->on('mes');
+            $table->foreign('periodo_id')->references('id')->on('periodo');
         });
     }
 

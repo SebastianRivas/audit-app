@@ -15,10 +15,12 @@ class CreateEvaluacionAlcanceTable extends Migration
     {
         Schema::create('evaluacion_alcance', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('alcance_id');
-            $table->boolean('aplica');
+            $table->text('aplica');
             $table->timestamps();
 
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('alcance_id')->references('id')->on('alcance');
         });
     }

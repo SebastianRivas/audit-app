@@ -15,6 +15,7 @@ class CreateEvaluacionFuenteInformacionTable extends Migration
     {
         Schema::create('evaluacion_fuente_informacion', function (Blueprint $table) {
             $table->id();
+            $table->integer('plan_auditoria_id');
             $table->integer('fuente_informacion_id');
             $table->text('relacion');
             $table->text('apartado');
@@ -24,6 +25,7 @@ class CreateEvaluacionFuenteInformacionTable extends Migration
             $table->text('concluido');
             $table->timestamps();
 
+            $table->foreign('plan_auditoria_id')->references('id')->on('plan_auditoria');
             $table->foreign('fuente_informacion_id')->references('id')->on('fuente_informacion');
         });
     }
